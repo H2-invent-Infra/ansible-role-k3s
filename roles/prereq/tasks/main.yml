@@ -1,4 +1,20 @@
 ---
+- name: Setup open-iscsi for longhorn
+  apt:
+    name:
+      - open-iscsi
+    state: present
+  tags:
+    - iscsi
+
+- name: Start and Enable openiscsi
+  systemd:
+    name: iscsid
+    enabled: true
+    state: started
+  tags:
+    - iscsi
+  
 - name: Enforce minimum Ansible version
   ansible.builtin.assert:
     that:
