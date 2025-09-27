@@ -1,4 +1,9 @@
 ---
+- name: Install Python Kubernetes
+  ansible.builtin.apt:
+    name: python3-kubernetes
+    state: present
+
 - name: Get k3s installed version
   ansible.builtin.command: k3s --version
   register: k3s_version_output
